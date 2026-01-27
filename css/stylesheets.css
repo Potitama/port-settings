@@ -1,0 +1,25 @@
+.container {
+    font-family: 'Kaisei Decol', serif;
+    height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    text-align: center;
+}
+
+.text {
+    font-size: 18px;
+    line-height: 0.7;
+}
+
+h2 {
+    margin-top:90px;
+}
+
+.one {
+    margin-top: 50px
+}
+
+img {
+    border: 2px solid black;
+}
