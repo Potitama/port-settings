@@ -1,0 +1,135 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポート開放手順（みつみさん向け）</title>
+    <link rel="stylesheet" href="css/stylesheets.css">
+    <link rel="stylesheet" href="css/responsible.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<div class="side-menu">
+    <h3>メニュー</h3>
+    <ul>
+        <li><a href="index.html">はじめに</a></li>
+        <li><a href="worklist.html">1.作業一覧</a></li>
+        <li><a href="guide.html">2.接続手順</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>サーバー構築に伴うポート開放作業</h1>
+    </div>
+    <div class="contents">
+
+        <h2>1.作業一覧</h2>
+<p class="text"><a href="#ip-setting">【1-1】IPアドレスの手動設定（一度設定すればOK）</a></p>
+<p class="text"><a href="#firewall-setting">【1-2】windowsファイアウォールの設定（ゲーム毎に設定が必要）</a></p>
+<p class="text"><a href="#router-setting">【1-3】ルーターのNATエントリの追加とポート開放設定（ゲーム毎に設定が必要）</a></p>
+
+        <h2 id="ip-setting">【1-1】IPアドレスの手動設定</h2>
+        <p class="text">この設定は一度実施すればOKであり、ゲームごとに毎回やる必要はない。</p>
+        <p class="text">むしろネットに接続できなくなったり等、トラブルの元になるので基本的には変更しないこと。</p>
+        <p class="text">ここで設定した内容を後から変更すると、参加者がみつみさんのサーバーに接続できなくなるためその点も注意。</p>
+
+        <p class="text one">①windowsキー ＋ R を押して「ファイル名を指定して実行」ウィンドウを開く</p>
+        <img src="./png/executeWindow.png">
+        <p class="text one">②「ncpa.cpl」と入力してOKを押下する</p>
+        <img src="./png/ncpaWindow.png">
+        <p class="text one">③左上に表示されたネットワークのアイコンを右クリック→プロパティを選択</p>
+        <img src="./png/networkProperty.png">
+        <p class="text one">④インターネットプロトコルバージョン4(TCP/IPv4)を選択→プロパティを選択</p>
+        <img src="./png/ipv4Property.png">
+        <p class="text one">⑤「次のIPアドレスを使う」を選択し、以下の情報を手入力→OK</p>
+        <p class="text">IPアドレス：192.168.0.100</p>
+        <p class="text">サブネットマスク：255.255.255.0</p>
+        <p class="text">デフォルトゲートウェイ：192.168.0.1</p>
+        <p class="text">優先DNSサーバー：192.168.0.1</p>
+        <img src="./png/ipaddress.png">
+        <p class="text one">以上でIPアドレスの手動設定は完了</p>
+        <p class="text">作業完了後に問題なくネットが使える事を確認すること</p>
+
+        <h2 id="firewall-setting">【1-2】windowsファイアウォールの設定</h2>
+        <p class="text">この設定はサーバーを構築するゲーム毎に必要になる。（パルワールド用、Ark用等）</p>
+        <p class="text">設定前にサーバー構築したいゲームのポート番号を確認（決定）しておく。</p>
+        <p class="text one">（例）パルワールド：8211　ARK：7777、27015</p>
+        <p class="text one">ゲーム毎に違う点は設定するポート番号だけで、それ以外は同じ手順で設定可能。</p>
+
+        <p class="text one">①windowsキー ＋ R を押して「ファイル名を指定して実行」ウィンドウを開く。</p>
+        <img src="./png/executeWindow.png"> 
+        <p class="text one">②「firewall.cpl」と入力してOKを押下する。</p>
+        <img src="./png/fireWallWIndow.png">
+        <p class="text one">③ファイアウォールの画面の中から詳細設定を開く。</p>
+        <img src="./png/fireWall.png">
+        <p class="text one">④出てきた画面の中から受信の規則→新しい規則を選択する。</p>
+        <img src="./png/recieveFireWall.png">
+        <p class="text one">⑤受信の規則のウィンドウが表示されたら、「ポート」を選択→次へ</p>
+        <img src="./png/recievePort.png">                             
+        <p class="text one">⑥TCPおよびUDPどちらも設定が必要なので、どちらか選択して設定が完了したらもう片方の設定も同じように行う。</p>
+        <p class="text">ポートは「特定のローカルポート」を選択し、最初に確認したゲーム毎のポート番号を設定する。</p>
+        <img src="./png/protoclPort.png"> 
+        <p class="text one">⑦「接続を許可する」を選択→次へ</p>
+        <img src="./png/permission.png">
+        <p class="text one">⑧「プライベート」にチェック→次へ</p>
+        <img src="./png/private.png">
+        <p class="text one">⑨わかりやすい任意の名前をつける（UDPかTCPの記載があると良い）→次へ</p>
+        <img src="./png/name.png">       
+        <p class="text one">⑩一覧画面に設定した項目が追加されている事を確認する。</p>
+        <img src="./png/view.png">                                  
+        <p class="text one">⑪上記と同じ手順でTCP、UDPのうちもう片方も設定する。</p>
+        <img src="./png/another.png">
+        <p class="text one">⑫以下のように２つの設定が作成されていれば「受信の規則」は設定完了。</p>
+        <img src="./png/recieveBoth.png">        
+        <p class="text one">⑬「送信の規則」も上記と同じ手順で２つの設定を作成する。</p>
+        <img src="./png/sendBoth.png">
+        <p class="text one">全部で上記4つの設定を作成すればwindowsファイアウォールの設定は完了</p>
+        
+        <h2 id="router-setting">【1-3】ルーターのNATエントリの追加とポート開放設定</h2>
+        <p class="text">この設定もゲーム毎に必要になるので、事前に確認したポート番号を元に設定を行う</p>
+
+        <p class="text one">①ブラウザのURLに「192.168.0.1」と入力して管理画面にアクセスする。</p>
+        <img src="./png/Login.png">
+        <p class="text one">②詳細設定→IPv4ポートマッピング設定を開いて「追加」ボタンを押下する。</p>
+        <img src="./png/mappingList.png">
+        <p class="text one">③以下の設定値を入力し、左上にある「保存」ボタンを押下する。</p>
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>設定値</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LAN側ホスト</td>
+      <td>192.168.0.100</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>プロトコル</td>
+      <td>TCPおよびUDP</td>
+      <td>両方とも必要なので、TCPとUDPそれぞれ設定する</td>
+    </tr>
+    <tr>
+      <td>ポート番号</td>
+      <td>ゲーム毎のポート番号</td>
+      <td>anyのチェックを外すと入力欄が２つとも有効になるので、どちらにも同じゲーム毎のポート番号を設定する</td>
+    </tr>
+        <tr>
+      <td>優先度</td>
+      <td>設定値の連番</td>
+      <td>既存で存在する設定も含めた連番を設定する（例：設定が4つ存在し、新しく5つ目の設定なら設定値は5になる）</td>
+    </tr>
+  </tbody>
+</table>
+        <img src="./png/mappingAdd.png">        
+        <p class="text one">④一覧画面に作成した設定が追加されている事を確認する。</p>
+        <img src="./png/listResult.png">
+        <p class="text one">TCPおよびUDP2つの設定を作成すればルータのポート開放設定は完了</p>
+        <div class="footer"></div>
+        <a href="#" class="back-to-top">▲ ページ上部へ戻る</a>                  
+    </div>
+</div>

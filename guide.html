@@ -1,0 +1,51 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポート開放手順（みつみさん向け）</title>
+    <link rel="stylesheet" href="css/stylesheets.css">
+    <link rel="stylesheet" href="css/responsible.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<div class="side-menu">
+    <h3>メニュー</h3>
+    <ul>
+        <li><a href="index.html">はじめに</a></li>
+        <li><a href="worklist.html">1.作業一覧</a></li>
+        <li><a href="guide.html">2.接続手順</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>サーバー構築に伴うポート開放作業</h1>
+    </div>
+    <div class="contents">
+
+        <h2>2.接続手順</h2>
+        <!-- <p class="text">全ゲーム共通で、サーバーへの接続はIPアドレスを指定する。</p>
+        <p class="text">ポート番号はゲーム毎に違うが、IPアドレスはどのゲームでも指定先は同じになる。</p>
+        <p class="text">1.作業一覧で設定した内容が正しくできていれば、ゲームによってはサーバーを起動した時点でサーバー一覧に表示される事もある。</p>
+        <p class="text"></p>
+        <p class="text one">サーバーを立てている本人（みつみさん）とその他の参加者で接続時に指定するIPアドレスが異なるので注意。</p> -->
+
+        <p class="text one">①各ゲームを起動し、サーバー接続先を指定する画面を開く（例：以下はパルワールド）</p>
+        <p class="text">※サーバーを構築できる系のゲームは必ずIPアドレスで接続先を指定できるので、ゲーム毎に探す</p>
+        <img src="./png/pal.png">
+        <p class="text one">②自身（みつみさん）のグローバルIPアドレスを確認する。（以下のサイト等）</p>
+        <p class="text">※以下画像はぽちたま家のもの。みつみ家のグローバルIPは変わっていなければ「118.105.233.90」</p>
+        <a href="https://www.cman.jp/network/support/go_access.cgi"><p class="text">https://www.cman.jp/network/support/go_access.cgi</p></a>
+        <img src="./png/grobalip.png">
+        <p class="text one">③他の参加者に「グローバルIPアドレス:ポート番号」を指定して接続してもらう。</p>
+        <p class="text">みつみさんの場合はグローバルIPに変化が無ければ「118.105.233.90:ポート番号」</p>
+        <p class="text">例えばARKサーバーを構築した場合は「118.105.233.90:7777」を他の参加者に指定してもらう。</p>
+        <img src="./png/connect.png">
+        <p class="text one">④みつみさん自身は「127.0.0.1:ポート番号」を指定して接続する。</p>
+        <img src="./png/selfConnect.png">
+        <div class="footer"></div>
+
+        <a href="#" class="back-to-top">▲ ページ上部へ戻る</a>                  
+    </div>
+</div>
